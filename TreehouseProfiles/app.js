@@ -3,22 +3,15 @@
 
 var profile = require("./profile.js"); // .js at the end is optional. Path is mandatory.
 
-//var users = ["chalkers", "umachandran"];
+var topic = process.argv.slice(2,3); // take the first argument after app.js as the topic area for points
+var users = process.argv.slice(3); // take remaining arguments as the usernames
 
-var users = process.argv.slice(2); // starts at 2 and returns rest
 
-// let's call each item in the array when running forEach, username. 
-// usually don't use forEach in browser but ok with  Chrome's V8 
-/*users.forEach(function(username){
-  profile.get(username);
+/* let's call each item in the array when running forEach, username. 
+	Usually don't use forEach in browser but ok with  Chrome's V8 
+	OR shorten to: users.forEach(profile.get);*/
+
+//For each iem in the users array, get the profile using the username and topic listed.
+users.forEach(function(username){
+  profile.get(username, topic);
 });
-
-OR shorten to: */
-
-users.forEach(profile.get);
-
-// friendly error message
-// make first argument after app.js be the topic area you want the points for
-// extract all printing messages out into its own module named printer.
-
-// interact with api from weather site that takes postal code or zip card as argument and prints out today's weather.
